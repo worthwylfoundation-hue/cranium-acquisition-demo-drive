@@ -1,31 +1,34 @@
 # Convertible Cranium Acquisition Demo Drive
 
-**Status: Buyer-facing offline demonstration & diligence surface — Non-canonical**
+**Status: Buyer-facing offline demonstration and diligence surface. Non-canonical.**
 
-The sole canonical authority source is [**Liberty Kernel**](https://github.com/worthwyl2022-cloud/cranium-kernel) (`cranium-kernel`).  
-Product story: **Justice OS** · interface: **Commander AI** (propose only).
-
-This drive is a Linux-first, offline, buyer-facing demonstration of the WorthWyl / Convertible Cranium governance substrate. It boots into an interactive presentation rather than an ordinary file browser.
-
-## Core invariant
+The canonical authority boundary belongs to **Convertible Cranium Kernel**. This drive is a presentation and evaluation artifact, not an authority source.
 
 > Cognition may come from anywhere.  
-> Authority comes only through Liberty Kernel.
+> Authority comes only through Cranium.
 
-A demo, tour, or successful local boot is **not** an authority grant and **not** proof of production HSM, verified boot, or third-party audit.
+The **Convertible Cranium Acquisition Demo Drive** is a Linux-first, offline demonstration of the WorthWyl / Convertible Cranium governance ecosystem. It boots into an interactive presentation rather than an ordinary file browser.
+
+## Governance model
+
+The architecture separates two forms of integrity:
+
+- **Convertible Cranium Guardian Substrate:** Constitutional Integrity
+- **Convertible Cranium Imperial Substrate:** Evidence Integrity
+
+Synapse may receive proposals and evidence. Interfaces and models may explain, compare, or recommend. Neither a model, a demo, a successful local boot, nor a presentation surface grants authority. Execution authority remains behind the Convertible Cranium Kernel boundary.
+
+A demo or successful local boot is **not** proof of production HSM, verified boot, independent security audit, or deployment readiness.
 
 ## What a buyer sees on boot
 
-Visual executive overview, guided tour, architecture map, product cards, governance controls, COMA containment, and a safe deployment rehearsal. Read-only by default. No live credentials. No external actions.
+A visual executive overview, guided tour, ecosystem architecture map, product cards, governance controls, COMA containment, and a safe deployment rehearsal. The interface is read-only by default. It contains no live credentials and performs no external actions.
 
 ## Ecosystem included
 
-Assembled local source and documentation surfaces for Convertible Cranium AI, Kernel, Synapse, supporting planes, Miracle Memory, WorthWyl Forge, acquisition package, Constitution, architecture docs, deployment guidance, and health checks.
+The assembled local presentation covers Convertible Cranium AI, Kernel, Synapse, supporting components, Miracle Memory, WorthWyl Forge, acquisition materials, the Constitution, architecture documentation, deployment guidance, and health checks.
 
-Each surface is independently presentable. Composition under Justice OS does not make any non-Kernel package the grant path.
-
-**Account map:** [worthwyl2022-cloud/ACCOUNT_INVENTORY.md](https://github.com/worthwyl2022-cloud/worthwyl2022-cloud/blob/main/ACCOUNT_INVENTORY.md)  
-**Kernel pin (project-verified):** `710ab844571c704078852b38d9451ffe68900acf`
+Each surface can be presented independently. Composition in this demonstration does not make any non-Kernel package an authority path.
 
 ## Run the interactive demo without booting
 
@@ -34,7 +37,7 @@ python3 -m http.server 8765 --directory demo
 # open http://127.0.0.1:8765/
 ```
 
-Fully static; works offline.
+The demo is static and designed to work offline.
 
 ## Build the bootable ISO
 
@@ -48,7 +51,11 @@ Output: `dist/cranium-acquisition-demo.iso`
 
 ## Security and scope
 
-Demonstration and diligence surface, not a production autonomous agent. Explanation is separated from authority. Passcodes, encryption, FRP, Activation Lock, MDM, and equivalent boundaries are not bypassed. Real deployment needs a separate approved plan, credentials at deploy time, and human review.
+This is a demonstration and diligence surface, not a production autonomous agent. It intentionally separates explanation from authority. Passcodes, encryption, Android Factory Reset Protection, Apple Activation Lock, MDM controls, and equivalent security boundaries are not bypassed. Real deployment requires a separately approved implementation plan, credentials supplied at deployment time, and human review.
+
+## Release verification
+
+Before describing this drive as current, verify its embedded source snapshots against the current canonical repositories and record the exact commit IDs. No source-snapshot freshness claim is made by this README.
 
 ## Ownership
 
