@@ -1,0 +1,20 @@
+FROM node:24-bookworm-slim AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run lint && npm run build
+
+FROM node:24-bookworm-slim
+WORKDIR /app
+ENV NODE_ENV=production
+ENV CRANIUM_ENTERPRISE_PORT=4101
+RUN useradd --system --uid 10001 --create-home cranium
+COPY --from=build /app/package*.json ./
+RUN npm ci --omit=dev
+COPY --from=build /app/src ./src
+COPY --from=build /app/scripts ./scripts
+RUN chown -R cranium:cranium /app
+USER cranium
+EXPOSE 4101
+CMD ["node", "./node_modules/tsx/dist/cli.mjs", "scripts/enterprise-gateway.ts"]

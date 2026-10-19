@@ -1,0 +1,54 @@
+{
+  "schema": "cranium-evidence-manifest-v1",
+  "authority": "cranium-kernel",
+  "statement": "Cognition may come from anywhere. Authority comes only through Cranium.",
+  "constitutionVersion": "1.0.0",
+  "protocol": "cranium-authority-protocol",
+  "files": [
+    {
+      "path": "docs/CANONICAL_SEMANTIC_CONTRACT.json",
+      "sha256": "04634415fa65388134c0c4f190be2a9528a10853be69466220aeac9d6e098b37"
+    },
+    {
+      "path": "docs/CRANIUM_AUTHORITY_PROTOCOL_V1.md",
+      "sha256": "91e6283d242ea5c4c4d1054e5e79c927e81b35d3ad19af6b01c7aac436b06f49"
+    },
+    {
+      "path": "docs/CRANIUM_CONSTITUTION_V1.md",
+      "sha256": "8cd439f89d33d375dd0c45bf509e69105c99d1dd4260b18e3a8c55aab82ec12d"
+    },
+    {
+      "path": "docs/RELEASE_MATRIX.md",
+      "sha256": "0fbbbd72dfc7f38c1b6a431f282687e85819159c388caea4357eb3e4e047f8d0"
+    },
+    {
+      "path": "src/kernel/constitution.ts",
+      "sha256": "1d747fb129879df6d3a13715641141bd3cb921f226973581209d869697573c66"
+    },
+    {
+      "path": "src/authority/authorityProxy.ts",
+      "sha256": "059b910d03f4e0b8c51ee3d909b49f3adaaf37184650d2f87f2b8c6e6adf5d20"
+    },
+    {
+      "path": "src/authority/sqliteAuthorityStore.ts",
+      "sha256": "0a9784e987efffd609b77b29cd25ed6d6385d21854c179ba80ad44fdc7dd5430"
+    },
+    {
+      "path": "scripts/authority-boundary-adversarial-check.ts",
+      "sha256": "0f160a832d81d010e27a69fd0737eb719f4e6a074fc5f7febe3987b50c7f73bd"
+    },
+    {
+      "path": "scripts/constitution-runtime-check.ts",
+      "sha256": "ec893c41061a460bd779154611dedd5b73eeff65c60bbcd5b38527611c6ba3ac"
+    },
+    {
+      "path": "scripts/conformance-vectors.ts",
+      "sha256": "61a3a14bea2e55be62bd450faab38318ac2ccb05b9101feefb176970f7e51961"
+    }
+  ],
+  "limitations": [
+    "A manifest proves the listed bytes and does not constitute an independent security audit.",
+    "CI execution proves the declared checks ran under their declared environment; it does not prove absence of vulnerabilities.",
+    "Production key custody, rotation, revocation, and external deployment controls remain separate diligence items."
+  ]
+}

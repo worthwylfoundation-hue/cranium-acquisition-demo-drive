@@ -1,0 +1,165 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "protocol": "cranium-authority-protocol",
+  "version": "1.0.0",
+  "vectors": [
+    {
+      "id": "accepted-transition",
+      "category": "grant",
+      "description": "A fresh, correctly bound proposal with valid evidence may commit a governed transition.",
+      "input": {
+        "namespace": "demo-account",
+        "proposalId": "proposal-accepted-001",
+        "replayKey": "replay-accepted-001",
+        "policyVersion": "policy-1",
+        "attestationStatus": "valid",
+        "assessmentDisposition": "allow",
+        "currentState": "state-0"
+      },
+      "expected": {
+        "decision": "GRANTED",
+        "durableCommit": true,
+        "receiptIssued": true,
+        "sideEffectEligible": true
+      }
+    },
+    {
+      "id": "explicit-denial",
+      "category": "deny",
+      "description": "A policy-denied assessment cannot become authority.",
+      "input": {
+        "namespace": "demo-account",
+        "proposalId": "proposal-denied-001",
+        "replayKey": "replay-denied-001",
+        "policyVersion": "policy-1",
+        "attestationStatus": "valid",
+        "assessmentDisposition": "deny",
+        "currentState": "state-0"
+      },
+      "expected": {
+        "decision": "DENIED",
+        "durableCommit": true,
+        "receiptIssued": true,
+        "sideEffectEligible": false
+      }
+    },
+    {
+      "id": "replay-rejection",
+      "category": "replay",
+      "description": "Reusing a consumed replay key cannot create a second accepted transition.",
+      "input": {
+        "namespace": "demo-account",
+        "proposalId": "proposal-replay-001",
+        "replayKey": "replay-consumed-001",
+        "policyVersion": "policy-1",
+        "attestationStatus": "valid",
+        "assessmentDisposition": "allow",
+        "replayState": "consumed"
+      },
+      "expected": {
+        "decision": "REPLAY_REJECTED",
+        "durableCommit": true,
+        "receiptIssued": true,
+        "sideEffectEligible": false
+      }
+    },
+    {
+      "id": "tampered-attestation",
+      "category": "integrity",
+      "description": "A proposal whose attestation commitment does not verify must fail closed.",
+      "input": {
+        "namespace": "demo-account",
+        "proposalId": "proposal-tampered-001",
+        "replayKey": "replay-tampered-001",
+        "policyVersion": "policy-1",
+        "attestationStatus": "commitment_mismatch",
+        "assessmentDisposition": "allow"
+      },
+      "expected": {
+        "decision": "INVALID_EVIDENCE",
+        "durableCommit": true,
+        "receiptIssued": true,
+        "sideEffectEligible": false
+      }
+    },
+    {
+      "id": "expired-attestation",
+      "category": "freshness",
+      "description": "Expired evidence cannot authorize a new transition.",
+      "input": {
+        "namespace": "demo-account",
+        "proposalId": "proposal-expired-001",
+        "replayKey": "replay-expired-001",
+        "policyVersion": "policy-1",
+        "attestationStatus": "expired",
+        "assessmentDisposition": "allow"
+      },
+      "expected": {
+        "decision": "STALE_EVIDENCE",
+        "durableCommit": true,
+        "receiptIssued": true,
+        "sideEffectEligible": false
+      }
+    },
+    {
+      "id": "evidence-unavailable",
+      "category": "fail-closed",
+      "description": "Missing required evidence produces an explicit unavailable decision, never implicit permission.",
+      "input": {
+        "namespace": "demo-account",
+        "proposalId": "proposal-unavailable-001",
+        "replayKey": "replay-unavailable-001",
+        "policyVersion": "policy-1",
+        "attestationStatus": "unavailable",
+        "assessmentDisposition": "unavailable"
+      },
+      "expected": {
+        "decision": "EVIDENCE_UNAVAILABLE",
+        "durableCommit": true,
+        "receiptIssued": true,
+        "sideEffectEligible": false
+      }
+    },
+    {
+      "id": "namespace-conflict",
+      "category": "isolation",
+      "description": "Evidence or state from one governed namespace cannot authorize a different namespace.",
+      "input": {
+        "namespace": "demo-account-b",
+        "proposalId": "proposal-namespace-001",
+        "replayKey": "replay-namespace-001",
+        "policyVersion": "policy-1",
+        "attestationStatus": "valid",
+        "attestationNamespace": "demo-account-a",
+        "assessmentDisposition": "allow"
+      },
+      "expected": {
+        "decision": "NAMESPACE_CONFLICT",
+        "durableCommit": true,
+        "receiptIssued": true,
+        "sideEffectEligible": false
+      }
+    },
+    {
+      "id": "restart-recovery",
+      "category": "durability",
+      "description": "A committed transition remains verifiable after authority-process restart.",
+      "input": {
+        "namespace": "demo-account",
+        "proposalId": "proposal-recovery-001",
+        "replayKey": "replay-recovery-001",
+        "policyVersion": "policy-1",
+        "attestationStatus": "valid",
+        "assessmentDisposition": "allow",
+        "restartAfterCommit": true
+      },
+      "expected": {
+        "decision": "GRANTED",
+        "durableCommit": true,
+        "receiptIssued": true,
+        "sideEffectEligible": true,
+        "receiptVerifiableAfterRestart": true
+      }
+    }
+  ]
+}

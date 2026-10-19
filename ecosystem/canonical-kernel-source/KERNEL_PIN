@@ -1,0 +1,35 @@
+# Convertible Cranium Kernel diligence pin
+# Product umbrella: Convertible Cranium
+# Authority component: Cranium Kernel
+# Cognition is proposal/evidence; only the Kernel may issue canonical authority.
+
+KERNEL_REPO=https://github.com/worthwylfoundation-hue/cranium-kernel
+KERNEL_BRANCH=main
+PIN_METADATA_UPDATED_ON=2026-10-19
+
+# Exact implementation revision verified from a clean checkout.
+VERIFIED_DILIGENCE_STAMP=ce24cd42ff520ba9e6953ccdda3b818dd6d48687
+VERIFIED_ON=2026-10-19
+VERIFIED_COMMANDS=npm ci; npm run verify; npm run verify:denial-semantics
+VERIFIED_EXIT=0
+VERIFIED_NODE=Node.js v24.18.0
+VERIFIED_OS=Android Termux
+VERIFIED_CLONE=clean checkout at exact VERIFIED_DILIGENCE_STAMP; npm ci and both verification commands exited 0; working tree clean after verification
+VERIFIED_NPM_AUDIT=0 vulnerabilities reported across 71 audited packages
+VERIFIED_HOSTED_CI_PR=60
+VERIFIED_HOSTED_CI_HEAD=57d938d2fb93a09cf86c84eefc57c5ad18395173
+VERIFIED_HOSTED_CI_RESULT=PR #60 CodeQL, Android, TypeScript, and Enterprise Integration Evidence passed; current main push CI on ce24cd4 passed all four workflows
+VERIFIED_MAIN_CI_RUNS=39229081170 (CodeQL); 39229081282 (Android); 39229081319 (Enterprise Integration Evidence); 39229081188 (TypeScript CI)
+ACQUISITION_STRESS_SUITE=14 passed; 0 failed; 0 not executed
+PRODUCTION_READINESS_CHECKS=33 passed
+PRODUCTION_READINESS_WARNINGS=local Compose disables PostgreSQL TLS and uses plaintext Redis; production must enable managed/private TLS and rediss:// or equivalent private-network encryption
+
+PRODUCT_AUTHORITY_CORE=Cranium Kernel
+PRODUCT_OS=Convertible Cranium Commander OS
+PRODUCT_UI=Convertible Cranium Commander OS
+AI_PERSONA=WorthWyl AI
+SUBSTRATE_A=Convertible Cranium Guardian Substrate (Constitutional Integrity)
+SUBSTRATE_B=Convertible Cranium Imperial Substrate (Evidence Integrity)
+ENGINE_LAYOUT=Guardian handles Constitutional Integrity; Imperial handles Evidence Integrity; Cranium Kernel is the sole authority boundary
+
+NON_CLAIMS=No independent security audit; no HSM/KMS deployment; no verified-boot proof; no production certification; no customers, revenue, or commercial traction inferred

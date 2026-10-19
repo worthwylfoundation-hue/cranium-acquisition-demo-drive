@@ -177,7 +177,7 @@ The central proposition is therefore simple:
 
 ## References
 
-[1]: https://github.com/worthwyl2022-cloud/cranium-kernel "Cranium Kernel repository"
+[1]: https://github.com/worthwylfoundation-hue/cranium-kernel "Cranium Kernel repository"
 [2]: https://github.com/worthwyl2022-cloud/cranium-synapse "Convertible Cranium Synapse repository"
 [3]: https://github.com/worthwyl2022-cloud/cranium-ultra-platform "Cranium Ultra Platform repository"
 [4]: https://github.com/worthwyl2022-cloud/worthwyl-forge "WorthWyl Forge repository"
