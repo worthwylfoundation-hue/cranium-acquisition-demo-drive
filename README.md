@@ -55,7 +55,7 @@ This is a demonstration and diligence surface, not a production autonomous agent
 
 ## Release verification
 
-Before describing this drive as current, verify its embedded source snapshots against the current canonical repositories and record the exact commit IDs. No source-snapshot freshness claim is made by this README.
+The canonical Kernel source snapshot is pinned to the verified diligence stamp recorded in `KERNEL_PIN` and `KERNEL_SNAPSHOT_PROVENANCE.md`; verify it with `bash scripts/verify-kernel-snapshot.sh ecosystem/canonical-kernel-source`. The customized demo/UI payload and other embedded component snapshots still require separate freshness and runtime validation; this does not certify the entire drive as current or boot-verified.
 
 ## Ownership
 

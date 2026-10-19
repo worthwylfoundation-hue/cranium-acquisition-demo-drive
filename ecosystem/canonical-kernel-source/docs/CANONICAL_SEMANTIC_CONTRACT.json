@@ -1,0 +1,44 @@
+{
+  "contractId": "cranium-semantic-contract",
+  "version": "1.0.0",
+  "authoritySource": "cranium-kernel",
+  "authoritySourceUrl": "https://github.com/worthwyl2022-cloud/cranium-kernel",
+  "status": "canonical",
+  "principles": {
+    "authority": "Only cranium-kernel may evaluate, reduce, replay-protect, journal, persist canonical state, issue canonical receipts, or grant authority.",
+    "evidence": "Synapse and all supporting surfaces provide bounded evidence or requests; evidence never grants authority.",
+    "state": "Canonical state is loaded from and committed through the Kernel authority proxy/store; browser state, local reducers, fixtures, and model output are non-canonical.",
+    "failure": "Ambiguous, stale, tampered, replay-conflicting, unverifiable, or non-durable operations fail closed.",
+    "claims": "Evidence language must distinguish implemented and verified, implemented not yet verified in CI, designed not implemented, fixture/test-only, and placeholder. Placeholders are prohibited in authority-bearing data."
+  },
+  "authorityBoundary": {
+    "evaluate": "DefaultAuthorityTransitionEngine",
+    "reduce": "KernelStateReducer",
+    "writeInterface": "KernelAuthorityProxy",
+    "store": "DurableAuthorityStore",
+    "receipt": "CanonicalReceipt",
+    "receiptRequirements": ["authority=cranium-kernel", "transactionId", "journalSequence", "stateHash", "verified against current Kernel store"]
+  },
+  "synapse": {
+    "role": "bounded attestation and evidence adapter",
+    "mayGrantAuthority": false,
+    "mayMutateCanonicalState": false,
+    "requiredAttestationFields": ["assessmentId", "correlationId", "modelId", "modelWeightsHash", "inferenceRuntime", "policyPackVersion", "controllerConfigHash", "riskClass", "riskScore", "confidence", "intervention", "traceCommitment", "disposition"],
+    "riskScoreRange": [0, 1],
+    "confidenceRange": [0, 1],
+    "canonicalIntegration": "cranium-kernel/src/governance/SynapseRuntimeAdapter.ts"
+  },
+  "transition": {
+    "requestType": "AuthorityTransitionRequest",
+    "requiredFields": ["requestId", "idempotencyKey", "subjectId", "requestedAuthority", "evidence", "justification", "requesterId", "timestamp", "targetAuthorityVersion"],
+    "hash": "CanonicalEncoder.hashRequest + SHA-256",
+    "replay": "exact reuse returns the committed transition; conflicting reuse is rejected",
+    "commit": "only a boundary-passing evaluation may be reduced and durably committed"
+  },
+  "evidenceLabels": ["implemented and verified", "implemented, not yet verified in CI", "designed, not implemented", "fixture", "test-only", "placeholder"],
+  "conformance": {
+    "referenceCorpus": "cranium-kernel/scripts/synapse-integration-check.ts",
+    "referenceVerification": ["npm run lint", "npm run verify:synapse", "npm run verify:durable"],
+    "nonGoal": "Byte-identical local filesystem behavior across platforms is not required; logical authority semantics must not drift."
+  }
+}

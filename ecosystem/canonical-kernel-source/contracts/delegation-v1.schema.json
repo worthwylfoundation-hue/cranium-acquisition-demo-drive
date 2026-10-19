@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://convertible-cranium.org/contracts/delegation-v1.schema.json",
+  "title": "Convertible Cranium Delegation v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "delegation_id",
+    "delegator",
+    "delegatee",
+    "capability_ref",
+    "scope",
+    "issued_at"
+  ],
+  "properties": {
+    "version": {
+      "const": "delegation-v1"
+    },
+    "delegation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "delegator": {
+      "type": "string",
+      "minLength": 1
+    },
+    "delegatee": {
+      "type": "string",
+      "minLength": 1
+    },
+    "capability_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "type": "string",
+      "minLength": 1
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "revoked_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "parent_delegation_ref": {
+      "type": "string"
+    }
+  }
+}

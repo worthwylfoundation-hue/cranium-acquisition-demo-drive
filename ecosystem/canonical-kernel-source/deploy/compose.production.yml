@@ -1,0 +1,28 @@
+services:
+  gateway:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.enterprise
+    environment:
+      NODE_ENV: production
+      DATABASE_URL: ${DATABASE_URL:?set DATABASE_URL with sslmode=verify-full}
+      REDIS_URL: ${REDIS_URL:?set REDIS_URL as rediss://}
+      CRANIUM_DB_SSL: "true"
+      CRANIUM_DB_SSL_CA_FILE: /run/secrets/postgres_ca
+      CRANIUM_ENTERPRISE_PORT: "4101"
+      CRANIUM_OIDC_ISSUER: ${CRANIUM_OIDC_ISSUER:?set CRANIUM_OIDC_ISSUER}
+      CRANIUM_OIDC_AUDIENCE: ${CRANIUM_OIDC_AUDIENCE:?set CRANIUM_OIDC_AUDIENCE}
+      CRANIUM_OIDC_JWKS_URI: ${CRANIUM_OIDC_JWKS_URI:?set CRANIUM_OIDC_JWKS_URI}
+      CRANIUM_TRUSTED_PROXY_CIDRS: ${CRANIUM_TRUSTED_PROXY_CIDRS:?set CRANIUM_TRUSTED_PROXY_CIDRS}
+      CRANIUM_RATE_LIMIT: ${CRANIUM_RATE_LIMIT:-120}
+      CRANIUM_RATE_WINDOW_MS: ${CRANIUM_RATE_WINDOW_MS:-60000}
+      CRANIUM_RATE_MAX_ENTRIES: ${CRANIUM_RATE_MAX_ENTRIES:-10000}
+    ports:
+      - "4101:4101"
+    secrets:
+      - postgres_ca
+    restart: unless-stopped
+
+secrets:
+  postgres_ca:
+    file: ${CRANIUM_DB_SSL_CA_FILE:?set CRANIUM_DB_SSL_CA_FILE to the managed PostgreSQL CA bundle}

@@ -1,0 +1,56 @@
+name: Enterprise Integration Evidence
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'src/**'
+      - 'scripts/**'
+      - 'deploy/**'
+      - 'package*.json'
+      - '.github/workflows/enterprise-integration.yml'
+
+jobs:
+  live-services:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_DB: cranium
+          POSTGRES_USER: cranium
+          POSTGRES_PASSWORD: cranium-ci-password
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U cranium -d cranium"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 20
+      redis:
+        image: redis:8
+        ports: ['6379:6379']
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 3s
+          --health-retries 20
+    env:
+      DATABASE_URL: postgresql://cranium:cranium-ci-password@127.0.0.1:5432/cranium
+      REDIS_URL: redis://127.0.0.1:6379
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run build
+      - run: npm run verify:enterprise-integration
+      - run: npm run verify:distributed-session
+      - run: npm run verify:session-circuit-breaker
+      - run: npm run verify:redis-session
+        env:
+          REDIS_URL: redis://127.0.0.1:6379
+      - name: PostgreSQL authority store smoke test
+        run: node ./node_modules/tsx/dist/cli.mjs scripts/postgres-authority-store-check.ts

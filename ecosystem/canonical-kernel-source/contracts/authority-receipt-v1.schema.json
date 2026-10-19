@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://convertible-cranium.org/contracts/authority-receipt-v1.schema.json",
+  "title": "Convertible Cranium Authority Receipt v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version","receipt_id","request","subject","capability","policy","decision","timestamp","nonce","chain"],
+  "properties": {
+    "version": {"const": "authority-receipt-v1"},
+    "receipt_id": {"type": "string","minLength": 1},
+    "request": {"$ref": "#/$defs/request"},
+    "subject": {"$ref": "#/$defs/subject"},
+    "capability": {"$ref": "#/$defs/capability"},
+    "policy": {"$ref": "#/$defs/policy"},
+    "evidence": {"type": "array","items":{"type":"string"}},
+    "delegation": {"type": "array","items":{"type":"string"}},
+    "decision": {"enum":["GRANT","DENY","REVOKE"]},
+    "execution": {"$ref":"#/$defs/execution"},
+    "state_transition": {"type":"string"},
+    "timestamp": {"type":"string","format":"date-time"},
+    "nonce": {"type":"string","minLength":1},
+    "chain": {"$ref":"#/$defs/chain"},
+    "signature": {"$ref":"#/$defs/signature"}
+  },
+  "$defs": {
+    "request": {"type":"object","additionalProperties":false,"required":["request_hash","action","resource"],"properties":{"request_hash":{"type":"string"},"action":{"type":"string"},"resource":{"type":"string"}}},
+    "subject": {"type":"object","additionalProperties":false,"required":["subject_id"],"properties":{"subject_id":{"type":"string"},"owner_id":{"type":"string"},"model_id":{"type":"string"},"agent_id":{"type":"string"}}},
+    "capability": {"type":"object","additionalProperties":false,"required":["capability_id","scope","risk_ceiling"],"properties":{"capability_id":{"type":"string"},"scope":{"type":"string"},"risk_ceiling":{"type":"string"},"issued_at":{"type":"string","format":"date-time"},"expires_at":{"type":"string","format":"date-time"},"revocation_ref":{"type":"string"}}},
+    "policy": {"type":"object","additionalProperties":false,"required":["policy_id","policy_hash","constitution_hash"],"properties":{"policy_id":{"type":"string"},"policy_hash":{"type":"string"},"constitution_hash":{"type":"string"}}},
+    "execution": {"type":"object","additionalProperties":false,"properties":{"status":{"type":"string"},"result_hash":{"type":"string"},"side_effect":{"type":"boolean"}}},
+    "chain": {"type":"object","additionalProperties":false,"required":["previous_receipt_hash","receipt_hash"],"properties":{"previous_receipt_hash":{"type":"string"},"receipt_hash":{"type":"string"}}},
+    "signature": {"type":"object","additionalProperties":false,"properties":{"algorithm":{"const":"Ed25519"},"public_key_id":{"type":"string"},"value":{"type":"string"}}}
+  }
+}

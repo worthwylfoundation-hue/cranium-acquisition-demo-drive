@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://convertible-cranium.org/contracts/authority-request-v1.schema.json",
+  "title": "Convertible Cranium Authority Request v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "request_id",
+    "subject",
+    "action",
+    "resource",
+    "cognition",
+    "evidence",
+    "requested_capability"
+  ],
+  "properties": {
+    "version": {
+      "const": "authority-request-v1"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "subject": {
+      "$ref": "#/$defs/subject"
+    },
+    "action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "resource": {
+      "type": "string",
+      "minLength": 1
+    },
+    "cognition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "proposal_hash"
+      ],
+      "properties": {
+        "proposal_hash": {
+          "type": "string",
+          "minLength": 1
+        },
+        "model_id": {
+          "type": "string"
+        },
+        "agent_id": {
+          "type": "string"
+        },
+        "provider_id": {
+          "type": "string"
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "requested_capability": {
+      "type": "string",
+      "minLength": 1
+    },
+    "delegation_ref": {
+      "type": "string"
+    },
+    "human_approval_ref": {
+      "type": "string"
+    },
+    "nonce": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "$defs": {
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "subject_id"
+      ],
+      "properties": {
+        "subject_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner_id": {
+          "type": "string"
+        },
+        "agent_id": {
+          "type": "string"
+        },
+        "model_id": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

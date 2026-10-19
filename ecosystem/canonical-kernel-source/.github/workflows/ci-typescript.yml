@@ -1,0 +1,55 @@
+name: Cranium TypeScript CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: kernel-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  typescript:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Set up Node.js 24
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+      - name: Install
+        run: npm ci --legacy-peer-deps
+      - name: Typecheck
+        run: npm run lint
+      - name: Production build
+        run: npm run build
+      - name: Synapse integration check
+        run: npm run verify:synapse
+      - name: Miracle Memory check
+        run: npx tsx scripts/miracle-memory-check.ts
+      - name: Atomic recovery check
+        run: npx tsx scripts/atomic-recovery-check.ts
+      - name: Canonical conformance vectors
+        run: npm run verify:conformance
+      - name: Production boundary check
+        run: npm run verify:production-boundary
+      - name: Constitutional code audit
+        run: npm run verify:constitution
+      - name: Runtime constitutional contract
+        run: npm run verify:constitution-runtime
+      - name: Adversarial authority-boundary check
+        run: npx tsx scripts/authority-boundary-adversarial-check.ts
+      - name: Deterministic evidence manifest
+        run: npm run evidence:manifest
+      - name: Ensure evidence manifest is reproducible
+        run: git diff --exit-code -- evidence-manifest.json
+      - name: Complete verification gate
+        run: npm run verify

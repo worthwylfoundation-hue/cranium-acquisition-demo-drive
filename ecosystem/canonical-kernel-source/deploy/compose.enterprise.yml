@@ -1,0 +1,52 @@
+services:
+  postgres:
+    image: postgres:18
+    environment:
+      POSTGRES_DB: cranium
+      POSTGRES_USER: cranium
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+    volumes:
+      - cranium-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U cranium -d cranium"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  redis:
+    image: redis:8
+    command: ["redis-server", "--appendonly", "yes", "--appendfsync", "everysec"]
+    volumes:
+      - cranium-redis:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  gateway:
+    build:
+      context: ..
+      dockerfile: deploy/Dockerfile.enterprise
+    environment:
+      DATABASE_URL: postgresql://cranium:${POSTGRES_PASSWORD}@postgres:5432/cranium
+      CRANIUM_DB_SSL: "false"
+      CRANIUM_ENTERPRISE_PORT: "4101"
+      CRANIUM_OIDC_ISSUER: ${CRANIUM_OIDC_ISSUER:?set CRANIUM_OIDC_ISSUER}
+      CRANIUM_OIDC_AUDIENCE: ${CRANIUM_OIDC_AUDIENCE:?set CRANIUM_OIDC_AUDIENCE}
+      CRANIUM_OIDC_JWKS_URI: ${CRANIUM_OIDC_JWKS_URI:?set CRANIUM_OIDC_JWKS_URI}
+      REDIS_URL: redis://redis:6379
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    ports:
+      - "4101:4101"
+    restart: unless-stopped
+
+volumes:
+  cranium-postgres:
+  cranium-redis:
