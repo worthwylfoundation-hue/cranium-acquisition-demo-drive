@@ -1,7 +1,7 @@
 # Deal room — Cranium Kernel
 
 Operator: Wyl Mathes
-Asset: `worthwyl2022-cloud/cranium-kernel`
+Asset: `worthwylfoundation-hue/cranium-kernel`
 Posture: evaluation now; exclusive license or assignment only by signed instrument.
 
 ## In the offered tree
@@ -15,7 +15,7 @@ Posture: evaluation now; exclusive license or assignment only by signed instrume
 
 ## Out of the offered tree
 
-- Other public repos under worthwyl2022-cloud unless added by written amendment
+- Other repositories in the wider Convertible Cranium ecosystem unless added by written amendment
 - `cranium-relics` (private archive, provenance only)
 - Production key custody, HSM, rotation, revocation
 - Any claim of uniqueness or world-first status

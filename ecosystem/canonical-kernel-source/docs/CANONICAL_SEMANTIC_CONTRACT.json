@@ -2,7 +2,7 @@
   "contractId": "cranium-semantic-contract",
   "version": "1.0.0",
   "authoritySource": "cranium-kernel",
-  "authoritySourceUrl": "https://github.com/worthwyl2022-cloud/cranium-kernel",
+  "authoritySourceUrl": "https://github.com/worthwylfoundation-hue/cranium-kernel",
   "status": "canonical",
   "principles": {
     "authority": "Only cranium-kernel may evaluate, reduce, replay-protect, journal, persist canonical state, issue canonical receipts, or grant authority.",

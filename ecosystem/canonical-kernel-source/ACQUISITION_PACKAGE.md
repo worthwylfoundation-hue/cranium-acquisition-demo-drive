@@ -22,11 +22,11 @@
 | Local full suite (feat branch, pre-squash) | recorded 2026-09-29 local environment | exit 0 ~67.61s including denial-semantics |
 | Canon V1 on default branch | `482b9c54a80f0894e523cb94c77fa85d3f62c264` | Squash of validated canon onto `main` |
 | Previous full clean-clone diligence stamp | `e36bdba2fe0a448473f94250920e751c95e1d3e0` (2026-09-30) | Historical evidence only; superseded by the current-tip run below |
-| **Current main clean-clone verification** | **`52f312dc5b4f080332d47836ef55b6b73d1ef99b` (2026-10-15)** | GitHub-hosted Ubuntu 24.04.5 x64; Node `v24.21.0`; npm `11.19.0`; `npm ci` 0 (6s), `npm run verify` 0 (20s), `npm run verify:denial-semantics` 0 (<1s); [workflow run and full logs](https://github.com/worthwyl2022-cloud/cranium-kernel/actions/runs/38735598149) |
+| **Current main verification** | **`ce24cd42ff520ba9e6953ccdda3b818dd6d48687` (2026-10-19)** | Clean checkout on Android Termux; Node `v24.18.0`; npm `11.19.1`; `npm ci`, `npm run verify`, and `npm run verify:denial-semantics` all exited 0; npm audit reported 0 vulnerabilities across 71 packages. Main push CI on this exact SHA passed [TypeScript CI](https://github.com/worthwylfoundation-hue/cranium-kernel/actions/runs/39229081188), [Android CI](https://github.com/worthwylfoundation-hue/cranium-kernel/actions/runs/39229081282), [Enterprise Integration Evidence](https://github.com/worthwylfoundation-hue/cranium-kernel/actions/runs/39229081319), and [CodeQL](https://github.com/worthwylfoundation-hue/cranium-kernel/actions/runs/39229081170). |
 | Enterprise gateway hardening (#48) | `1704c3e30269a364f696d96bf76b48c87daabee9` | Audit decisions, trusted-proxy rate limits, production compose fail-closed shape |
-| KERNEL_PIN / memo restamp update | `52f312dc5b4f080332d47836ef55b6b73d1ef99b` | Documentation update records the verified implementation tip; it does not change code under test |
+| KERNEL_PIN / memo restamp update | `ce24cd42ff520ba9e6953ccdda3b818dd6d48687` | Current diligence stamp after full local verification and all four main-branch CI workflows passing |
 
-> **Current verification stamp:** A fresh clone of canonical `main` was tested on a GitHub-hosted Ubuntu 24.04.5 x64 runner on 2026-10-15 at source tip `52f312dc5b4f080332d47836ef55b6b73d1ef99b`. `npm ci`, `npm run verify`, and the separate `npm run verify:denial-semantics` all exited 0. The workflow logs capture stdout, stderr, exit codes, wall time, Node/npm versions, OS, and the exact source SHA. The Actions artifact upload was blocked by repository storage quota; full logs remain in the linked workflow run. This is reproducible project verification, **not an independent security audit or third-party certification**.
+> **Current verification stamp:** Exact main SHA `ce24cd42ff520ba9e6953ccdda3b818dd6d48687` was checked out cleanly and tested on Android Termux on 2026-10-19 with Node `v24.18.0` and npm `11.19.1`. `npm ci`, `npm run verify`, and `npm run verify:denial-semantics` all exited 0; npm audit reported 0 vulnerabilities across 71 packages. The exact main SHA also passed the [TypeScript CI](https://github.com/worthwylfoundation-hue/cranium-kernel/actions/runs/39229081188), [Android CI](https://github.com/worthwylfoundation-hue/cranium-kernel/actions/runs/39229081282), [Enterprise Integration Evidence](https://github.com/worthwylfoundation-hue/cranium-kernel/actions/runs/39229081319), and [CodeQL](https://github.com/worthwylfoundation-hue/cranium-kernel/actions/runs/39229081170) workflows. This is reproducible project verification, **not an independent security audit or third-party certification**.
 
 > This memorandum is an engineering diligence artifact. Claims are bounded by source inspection and executable verification in the lineage table. Architectural descriptions beyond `cranium-kernel` are system-level mappings unless separately verified.
 
@@ -115,7 +115,7 @@ For this revision, the `cranium-kernel` implementation is the directly inspected
 
 ### Full verification (lineage)
 
-Current clean-clone verification stamp: **`52f312dc5b4f080332d47836ef55b6b73d1ef99b`** (2026-10-15), GitHub-hosted Ubuntu 24.04.5 x64, Node `v24.21.0`, npm `11.19.0`; all three required commands exited 0. [Full run and logs](https://github.com/worthwyl2022-cloud/cranium-kernel/actions/runs/38735113133). This is project-run reproducibility evidence, not an independent security audit.
+Current verification stamp: **`ce24cd42ff520ba9e6953ccdda3b818dd6d48687`** (2026-10-19), clean checkout on Android Termux, Node `v24.18.0`, npm `11.19.1`; all three required commands exited 0. The exact main SHA passed [TypeScript CI](https://github.com/worthwylfoundation-hue/cranium-kernel/actions/runs/39229081188), [Android CI](https://github.com/worthwylfoundation-hue/cranium-kernel/actions/runs/39229081282), [Enterprise Integration Evidence](https://github.com/worthwylfoundation-hue/cranium-kernel/actions/runs/39229081319), and [CodeQL](https://github.com/worthwylfoundation-hue/cranium-kernel/actions/runs/39229081170). This is project-run reproducibility evidence, not an independent security audit.
 
 ```bash
 npm run verify
@@ -172,10 +172,10 @@ Postgres path (enterprise): SERIALIZABLE, idempotency keys, journal integrity, c
 ## APPENDIX B: REPRODUCTION
 
 ```bash
-git clone https://github.com/worthwyl2022-cloud/cranium-kernel.git
+git clone https://github.com/worthwylfoundation-hue/cranium-kernel.git
 cd cranium-kernel
 git checkout main
-git rev-parse HEAD   # record actual main tip; the 2026-10-15 run tested 52f312dc5b4f080332d47836ef55b6b73d1ef99b
+git rev-parse HEAD   # current main tip; latest verification stamp is ce24cd42ff520ba9e6953ccdda3b818dd6d48687
 npm ci
 npm run verify
 npm run verify:denial-semantics

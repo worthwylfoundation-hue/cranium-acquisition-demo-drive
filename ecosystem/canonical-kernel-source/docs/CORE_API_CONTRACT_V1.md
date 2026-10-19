@@ -1,6 +1,6 @@
 # Convertible Cranium Core API Contract v1
 
-**Status:** versioned implementation contract. **Version:** `1.0.0`. **Canonical repository:** `worthwyl2022-cloud/cranium-kernel`.
+**Status:** versioned implementation contract. **Version:** `1.0.0`. **Canonical repository:** `worthwylfoundation-hue/cranium-kernel`.
 
 ## Authority boundary
 

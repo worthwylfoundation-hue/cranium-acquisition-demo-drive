@@ -1,116 +1,79 @@
-# Convertible Cranium Justice OS — Acquisition Binder Index
+# Convertible Cranium: acquisition binder index
 
-**Date:** 2026-10-17  
-**Status:** Engineering diligence package (not legal advice; not a security certification)  
-**Authority core (product name):** Liberty Kernel  
-**Authority core (GitHub slug today):** `cranium-kernel`  
-**Primary repo:** https://github.com/worthwyl2022-cloud/cranium-kernel  
+**Product umbrella:** Convertible Cranium
+**Authority component:** Cranium Kernel
+**Primary repository:** https://github.com/worthwylfoundation-hue/cranium-kernel
+**Verified implementation stamp:** `2d0c6928ed5efb75a22a602f43516d22e9fbf610`
 
-## How to use this binder
+> **Cognition may come from anywhere. Authority comes only through Cranium.**
 
-1. Read this index.  
-2. Open linked documents for depth.  
-3. Reproduce verification from `KERNEL_PIN` (note tip may be ahead of stamp).  
-4. Treat Schedule A (Commander / Justice OS surface) vs Schedule B (Liberty Kernel retained) as commercial structure.  
+## 1. Buyer orientation
 
-Naming map (slug → product): `docs/REPOSITORY_NAMING_MAP_V1.md`  
-Architecture (dual-column engines): `docs/JUSTICE_OS_ARCHITECTURE_TREE_V1.md`  
+Convertible Cranium separates cognitive proposals from authority over consequential state changes. Models, tools, provider integrations, user interfaces, and supporting services may propose or supply evidence. The Cranium Kernel is the sole canonical authority boundary. Supporting surfaces do not independently grant authority or commit canonical state.
 
----
+The principal components are:
 
-## 1. Architecture map
+- **Cranium Kernel:** canonical grant/deny decision, durable transition, replay controls, and verifiable receipt.
+- **Synapse:** cognitive/provider ingress and evidence proposals, without independent authority.
+- **Convertible Cranium Guardian Substrate:** Constitutional Integrity.
+- **Convertible Cranium Imperial Substrate:** Evidence Integrity.
+- **Convertible Cranium Commander OS:** user-facing operating environment and integration surface.
+- **WorthWyl AI / Cranium AI:** cognitive and model-integration components, subordinate to the Kernel authority boundary.
+- **Commercial Boot Drive / Acquisition Demo Drive:** packaging and demonstration surfaces, not separate authority issuers.
 
-**Normative rule:** Cognition may come from anywhere. Authority comes only through Liberty Kernel (Cranium Kernel).
+## 2. Architecture and evidence map
 
-```
-Commander AI / models / tools     →  propose only
-        ↓
-Guardian / Constitutional Integrity   Imperial / Evidence Integrity
-  Engine A1 Synapse D_A             Engine B1 Synapse D_B
-  Engine A2 Constitutional          Engine B2 Evidence Grounding
-        ↓  convergence (not a vote)  ↓
-Liberty Kernel — sole GRANT|DENY + atomic state + journal + receipt
-        ↓
-Execution gate (receipt-bound only)
-```
+| Diligence question | Evidence entry point |
+|---|---|
+| What is authoritative? | `src/authority/authorityProxy.ts`, canonical semantic contract, `KERNEL_PIN` |
+| What blocks denied execution? | `scripts/command-execution-gate-check.ts`, `scripts/authority-denial-semantics-check.ts` |
+| What blocks replay and conflicting reuse? | `scripts/conformance-vectors.ts`, `scripts/authority-boundary-adversarial-check.ts` |
+| How is state made durable? | `src/authority/sqliteAuthorityStore.ts`, durable/recovery checks |
+| What protects the constitutional boundary? | `src/kernel/constitution.ts`, `scripts/constitution-runtime-check.ts` |
+| What demonstrates enterprise integration? | `scripts/enterprise-integration-check.ts`, transport-security and Redis rate-limiter checks |
+| What is the authority protocol? | `docs/CRANIUM_AUTHORITY_PROTOCOL_V1.md` |
+| What is the constitution? | `docs/CRANIUM_CONSTITUTION_V1.md` |
+| What is the threat model? | `docs/THREAT_MODEL_V1.md` |
+| What is the key-custody plan? | `docs/KEY_CUSTODY_V1.md` (plan, not proof of HSM/KMS deployment) |
+| What is Synapse's role? | `docs/SYNAPSE_CONTROLLER_V1.md`, `docs/SYNAPSE_CORE_EVIDENCE.md` |
+| What is the IP outline? | `docs/IP_CHAIN_OF_TITLE_V1.md` (requires legal diligence; not a title opinion) |
+| What is the denial demo? | `docs/DEMONSTRATION_AUTHORITY_RECEIPT_V1.md` and `npm run verify:denial-semantics` |
+| What is reproducibly verified? | `KERNEL_PIN`, `npm ci --legacy-peer-deps`, `npm run verify`, `npm run verify:denial-semantics` |
+| What remains open? | `docs/EVIDENCE_GAPS.md` and `docs/KERNEL_REVISION_RECONCILIATION_2026-10-18.md` |
 
-| Document | Path |
-|----------|------|
-| Justice OS tree | `docs/JUSTICE_OS_ARCHITECTURE_TREE_V1.md` |
-| Authority protocol | `docs/CRANIUM_AUTHORITY_PROTOCOL_V1.md` |
-| Constitution | `docs/CRANIUM_CONSTITUTION_V1.md` |
-| Denial semantics | `docs/AUTHORITY_DENIAL_SEMANTICS_V1.md` |
-| Key custody | `docs/KEY_CUSTODY_V1.md` |
-| Synapse controller | `docs/SYNAPSE_CONTROLLER_V1.md` |
-| Threat model | `docs/THREAT_MODEL_V1.md` |
-| Justice OS Chromium Edition boundary | `convertible-cranium-commander/COMMANDER_OS_PACKAGE_BOUNDARY.md` |
-| IP outline | `docs/IP_CHAIN_OF_TITLE_V1.md` |
-| Demo procedure | `docs/DEMONSTRATION_AUTHORITY_RECEIPT_V1.md` |
+Historical files with `Justice OS` or `Liberty Kernel` in their filenames are retained as repository history/reference documents; current product naming is defined by this index and `KERNEL_PIN`.
 
----
+## 3. Asset inventory
 
-## 2. Asset inventory (transfer schedules)
+| Schedule | Asset | Treatment for diligence |
+|---|---|---|
+| A | Convertible Cranium Commander OS | Product/UI surface; does not issue authority |
+| B | Cranium Kernel | Canonical authority component; transfer or retention terms require a separate commercial decision |
+| C | Commercial Boot Drive and Acquisition Demo Drive | Packaging/demo assets; bundled Kernel pins must match recorded source provenance |
+| D | Cranium AI and Synapse | Cognitive/provider components; subordinate to the Kernel authority boundary |
+| E | Archive and legacy payloads | Historical/reference assets; do not represent as current without provenance and validation |
 
-| Schedule | Product name | Current slug | Default |
-|----------|--------------|--------------|---------|
-| **A** | Justice OS Commander AI surface | `convertible-cranium-commander` | Licensable OS/UI |
-| **B** | **Liberty Kernel** authority | `cranium-kernel` | **Retained unless separately priced** |
-| **C** | Justice OS Boot / Acquisition demo | `cranium-boot-drive`, `cranium-acquisition-demo-drive` | Optional |
-| **D** | Commander AI cognition | `cranium-ai` | Optional; propose only |
-| **E** | Archived / historical | Ultra, archive, etc. | Reference only |
+## 4. Verification and limits
 
----
+The exact verified implementation SHA is `2d0c6928ed5efb75a22a602f43516d22e9fbf610`. A fresh clean clone passed `npm ci --legacy-peer-deps`, the full `npm run verify` suite, and `npm run verify:denial-semantics`. All 14 acquisition stress cases executed and passed. React and React DOM are aligned at `19.3.1`.
 
-## 3. Test evidence
+The production-readiness checker passes 33 static checks but retains explicit warnings for local-Compose PostgreSQL TLS and plaintext Redis. Private-repository branch protection is not enforced under the current GitHub plan.
 
-| Item | Value |
-|------|--------|
-| Pin | `KERNEL_PIN` |
-| Verified stamp | `VERIFIED_DILIGENCE_STAMP` (see pin; currently `52f312d`, 2026-10-15, exit 0) |
-| Main tip | `KERNEL_MAIN_TIP` — **may be ahead of stamp**; do not equate tip with verified |
-| Commands | `npm ci && npm run verify && npm run verify:denial-semantics` |
-| Denial demo | V-006 / V-007 / V-008 — `scripts/authority-denial-semantics-check.ts` |
+**Not claimed:** independent security audit, formal verification, HSM/KMS deployment, verified boot, universal production readiness, customer adoption, revenue, or valuation.
 
-**Not claimed:** independent security audit, HSM/KMS, verified boot, quantum runtime, Metabolic Memory v2 on grant path, customers, revenue.
+## 5. Recommended buyer sequence
 
----
+1. Read `docs/ACQUISITION_READINESS_BRIEF.md` and `docs/THREAT_MODEL_V1.md`.
+2. Reproduce verification at the exact stamp in `KERNEL_PIN`.
+3. Inspect denied-execution, replay, receipt-binding, durable-state, and recovery tests.
+4. Verify downstream source pins and each boot-drive snapshot before relying on a bundled demonstration.
+5. Review every remaining gap in `docs/EVIDENCE_GAPS.md` before making security, deployment, or commercial claims.
 
-## 4. Demonstration
+## 6. Transfer checklist for counsel and diligence
 
-`docs/DEMONSTRATION_AUTHORITY_RECEIPT_V1.md` → `npm run verify:denial-semantics`
-
----
-
-## 5. Known limitations
-
-See `docs/EVIDENCE_GAPS.md`. Highlights: HSM, Listener, verified boot, env-gated Redis/Postgres, partial stress suite, tip-ahead-of-stamp until re-run.
-
----
-
-## 6. Repository hygiene (2026-10-17)
-
-| Class | Treatment |
-|-------|-----------|
-| Liberty Kernel (`cranium-kernel`) | Sole authority |
-| Commander / Boot / Acquisition | Product surfaces; non-granting |
-| Synapse / providers | Ingress / proposal plane |
-| Archived Ultra | Reference only |
-
-**Open PRs on core stack (last audit):** none on Kernel, Commander, Boot, AI, Acquisition.  
-Rename when ready per `docs/REPOSITORY_NAMING_MAP_V1.md` (GitHub Settings; API cannot rename).
-
----
-
-## 7. Transfer checklist (counsel)
-
-- [ ] Entity / LLC title  
-- [ ] Schedule A vs B (Commander vs Liberty Kernel)  
-- [ ] OSS licenses / SBOM  
-- [ ] No secrets in public trees  
-- [ ] Buyer reproduces pin verify  
-- [ ] Non-claims in LOI  
-- [ ] Optional: execute GitHub renames after deal structure stable  
-
----
-
-**Author fact pattern (not a warranty):** Wyl Mathes · `worthwyl2022-cloud` · binder account `worthwylmedia-lang`.
+- [ ] Confirm chain of title, contributor rights, and any prior assignments with qualified counsel.
+- [ ] Review OSS licenses, dependency inventory/SBOM, and third-party notices.
+- [ ] Confirm no secrets or private credentials are present in transferred trees.
+- [ ] Have the buyer reproduce the exact pinned verification.
+- [ ] Preserve all non-claims and unresolved security/deployment gates in any LOI or diligence schedule.
+- [ ] Agree separately on Kernel transfer/retention and the scope of any license.

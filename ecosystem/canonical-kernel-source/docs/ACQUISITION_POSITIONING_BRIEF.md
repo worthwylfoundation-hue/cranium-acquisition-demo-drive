@@ -148,7 +148,7 @@ The opportunity may be significant because the control boundary becomes more imp
 
 ## References
 
-[1]: https://github.com/worthwyl2022-cloud/cranium-kernel "Cranium Kernel reference implementation"
-[2]: https://github.com/worthwyl2022-cloud/cranium-kernel/blob/main/docs/CRANIUM_AUTHORITY_PROTOCOL_V1.md "Cranium Authority Protocol v1"
-[3]: https://github.com/worthwyl2022-cloud/cranium-kernel/blob/main/docs/CRANIUM_CONFORMANCE_V1.json "Cranium Conformance v1 vectors"
-[4]: https://github.com/worthwyl2022-cloud/cranium-kernel/blob/main/docs/RELEASE_MATRIX.md "Cranium Release Readiness Matrix"
+[1]: https://github.com/worthwylfoundation-hue/cranium-kernel "Cranium Kernel reference implementation"
+[2]: https://github.com/worthwylfoundation-hue/cranium-kernel/blob/main/docs/CRANIUM_AUTHORITY_PROTOCOL_V1.md "Cranium Authority Protocol v1"
+[3]: https://github.com/worthwylfoundation-hue/cranium-kernel/blob/main/docs/CRANIUM_CONFORMANCE_V1.json "Cranium Conformance v1 vectors"
+[4]: https://github.com/worthwylfoundation-hue/cranium-kernel/blob/main/docs/RELEASE_MATRIX.md "Cranium Release Readiness Matrix"

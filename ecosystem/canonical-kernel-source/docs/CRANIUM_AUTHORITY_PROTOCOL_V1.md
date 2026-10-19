@@ -199,6 +199,6 @@ A receipt MUST identify the protocol version and policy version used at commit t
 
 ## Reference implementation and conformance corpus
 
-The reference authority boundary is [`cranium-kernel`](https://github.com/worthwyl2022-cloud/cranium-kernel). The attestation surface is [`cranium-synapse`](https://github.com/worthwyl2022-cloud/cranium-synapse). The public architecture thesis is in [`cranium-portfolio`](https://github.com/worthwyl2022-cloud/cranium-portfolio).
+The reference authority boundary is [`cranium-kernel`](https://github.com/worthwylfoundation-hue/cranium-kernel). The attestation surface is [`cranium-synapse`](https://github.com/worthwylfoundation-hue/cranium-synapse). The public architecture thesis is in [`cranium-portfolio`](https://github.com/worthwylfoundation-hue/cranium-portfolio).
 
 The next release requirement is a shared, language-neutral conformance corpus containing accepted, denied, replayed, tampered, expired, quarantined, namespace-conflicting, and restart-recovery cases. Independent implementations SHOULD be able to run the corpus without importing the reference implementation.

@@ -11,7 +11,7 @@ This is **project verification**, not a live multi-party demo UI. It exercises t
 ## Prerequisites
 
 ```bash
-git clone https://github.com/worthwyl2022-cloud/cranium-kernel.git
+git clone https://github.com/worthwylfoundation-hue/cranium-kernel.git
 cd cranium-kernel
 git checkout main
 git rev-parse HEAD   # compare to KERNEL_PIN

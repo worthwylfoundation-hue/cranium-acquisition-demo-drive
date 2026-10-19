@@ -2,7 +2,7 @@
 
 ## Snapshot
 
-- Repository: `worthwyl2022-cloud/cranium-kernel`
+- Repository: `worthwylfoundation-hue/cranium-kernel`
 - Default working branch observed: `main`
 - Commit count at inventory: `94`
 - Files at inventory: `96`

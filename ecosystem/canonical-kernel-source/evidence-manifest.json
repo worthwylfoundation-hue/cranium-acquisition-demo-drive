@@ -7,11 +7,11 @@
   "files": [
     {
       "path": "docs/CANONICAL_SEMANTIC_CONTRACT.json",
-      "sha256": "7271c1869f5c793b156f5961d4a3122c079ff7f488bd0248a50a1b4236cc0ca4"
+      "sha256": "04634415fa65388134c0c4f190be2a9528a10853be69466220aeac9d6e098b37"
     },
     {
       "path": "docs/CRANIUM_AUTHORITY_PROTOCOL_V1.md",
-      "sha256": "8883856b4a804edd5326fb57308c3787f07686d962753cb4f3e32759d10fb618"
+      "sha256": "91e6283d242ea5c4c4d1054e5e79c927e81b35d3ad19af6b01c7aac436b06f49"
     },
     {
       "path": "docs/CRANIUM_CONSTITUTION_V1.md",

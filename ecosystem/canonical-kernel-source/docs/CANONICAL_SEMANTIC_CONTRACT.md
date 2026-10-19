@@ -1,6 +1,6 @@
 # Canonical Semantic Contract
 
-**Authority:** [`cranium-kernel`](https://github.com/worthwyl2022-cloud/cranium-kernel) only. **Version:** `1.0.0`.
+**Authority:** [`cranium-kernel`](https://github.com/worthwylfoundation-hue/cranium-kernel) only. **Version:** `1.0.0`.
 
 This contract is the ecosystem source of truth for authority semantics. The machine-readable form is [`CANONICAL_SEMANTIC_CONTRACT.json`](./CANONICAL_SEMANTIC_CONTRACT.json). Supporting repositories may consume, validate, display, or document this contract; they must not fork its meaning or implement a competing authority boundary.
 

@@ -1,7 +1,7 @@
 {
   "contract": "cranium-core-api",
   "version": "1.0.0",
-  "repository": "worthwyl2022-cloud/cranium-kernel",
+  "repository": "worthwylfoundation-hue/cranium-kernel",
   "entrypoint": "src/index.ts",
   "exports": ["KernelAuthorityProxy", "SQLiteAuthorityStore", "DurableAuthorityStore", "CanonicalReceipt", "AuthorityTransitionRequest", "AuthorityTransition", "CanonicalEncoder", "KernelStateReducer", "createInitialKernelState"],
   "invariants": ["single external write boundary", "atomic journal and state commit", "hash-linked journal frames", "restart-safe idempotency", "same key and payload replays original receipt", "same key and different payload is denied"],

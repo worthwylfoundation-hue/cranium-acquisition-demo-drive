@@ -1,4 +1,4 @@
-# Cranium Acquisition Readiness Brief
+# Convertible Cranium Acquisition Readiness Brief
 
 ## Executive position
 
@@ -7,6 +7,12 @@ Cranium is a governed authority substrate for systems whose cognition may be sup
 > **Cognition may come from anywhere. Authority comes only through Cranium.**
 
 This distinction is the product thesis and the constitutional boundary. It is enforced by the Kernel evaluator, reducer, durable authority store, receipt verifier, replay controls, constitutional assertions, conformance vectors, and repository-local adoption gates.
+
+## Current verification anchor
+
+The verified implementation stamp is `2d0c6928ed5efb75a22a602f43516d22e9fbf610`. A fresh clean clone passed `npm ci --legacy-peer-deps`, `npm run verify`, and `npm run verify:denial-semantics`. The 14-case acquisition stress suite passed with zero failures or skipped cases. React and React DOM are aligned at `19.3.1`. The production-readiness checker reports 33 passing static checks and explicitly warns that local Compose uses plaintext Redis and disables PostgreSQL TLS.
+
+This is reproducible engineering evidence, not an independent security audit, production certification, HSM/KMS proof, or proof of verified boot. Private-repository branch protection is not enforced under the current GitHub plan, and downstream source pins still require refresh before the bundled boot drives can be represented as current.
 
 ## What is demonstrated
 

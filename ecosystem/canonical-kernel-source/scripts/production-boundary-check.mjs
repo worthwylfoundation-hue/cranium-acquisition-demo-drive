@@ -16,9 +16,9 @@ const excludedRoots = new Set([
 ]);
 const extensions = new Set(['.ts', '.tsx', '.js', '.jsx', '.mjs', '.cjs', '.py', '.kt', '.java', '.go', '.rs', '.json', '.yaml', '.yml']);
 const patterns = [
-  /\bMock[A-Z_\w]*/,
-  /\bFake[A-Z_\w]*/,
-  /\bStub[A-Z_\w]*/,
+  /\bMock\w*/,
+  /\bFake\w*/,
+  /\bStub\w*/,
   /UNSIGNED_LOCAL_RECEIPT/,
   /CRYPTOGRAPHICALLY_VERIFIED/,
   /VERIFIED_FORMAL_GATE/,

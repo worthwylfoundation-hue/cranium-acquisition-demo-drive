@@ -35,7 +35,7 @@ This evidence supports the statement that the stated contract behaviors are exec
 
 | Field | Value |
 |---|---|
-| Repository | `worthwyl2022-cloud/cranium-kernel` |
+| Repository | `worthwylfoundation-hue/cranium-kernel` |
 | Verification runtime | Node.js 22, TypeScript, Vite, `tsx` |
 | Signature algorithm | Ed25519 test-path verifier present; production key operations not configured |
 | Persistence | In-memory prototype store |

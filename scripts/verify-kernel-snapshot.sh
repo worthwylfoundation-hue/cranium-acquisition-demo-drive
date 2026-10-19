@@ -10,7 +10,7 @@ fail() { echo "Kernel snapshot verification failed: $*" >&2; exit 1; }
 [[ -f "$MANIFEST" && -f "$PIN_FILE" ]] || fail "pin or checksum manifest missing"
 PIN_COMMIT="$(sed -n 's/^KERNEL_COMMIT=//p' "$PIN_FILE" | head -n 1)"
 PIN_MANIFEST_SHA="$(sed -n 's/^KERNEL_SNAPSHOT_MANIFEST_SHA256=//p' "$PIN_FILE" | head -n 1)"
-[[ "$PIN_COMMIT" == "2d0c6928ed5efb75a22a602f43516d22e9fbf610" ]] || fail "unexpected Kernel commit pin: ${PIN_COMMIT:-missing}"
+[[ "$PIN_COMMIT" == "9508185be264de77ebfe88904e98237e242697f1" ]] || fail "unexpected Kernel commit pin"
 ACTUAL_MANIFEST_SHA="$(sha256sum "$MANIFEST" | awk '{print $1}')"
 [[ "$ACTUAL_MANIFEST_SHA" == "$PIN_MANIFEST_SHA" ]] || fail "checksum manifest hash does not match KERNEL_PIN"
 EXPECTED_COUNT="$(wc -l < "$MANIFEST" | tr -d '[:space:]')"

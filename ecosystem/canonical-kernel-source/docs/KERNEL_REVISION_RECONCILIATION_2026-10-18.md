@@ -1,93 +1,36 @@
-# Canonical Kernel — Access and Revision Reconciliation
+# Canonical Kernel: revision and access reconciliation
 
-**Date:** 2026-10-18  
-**Repo:** `worthwyl2022-cloud/cranium-kernel` (private)  
-**Product name:** Liberty Kernel  
-**Role:** Sole grant / deny / receipt boundary for Justice OS
+**Report date:** 2026-10-18
+**Canonical repository:** `worthwylfoundation-hue/cranium-kernel` (private)
+**Canonical URL:** https://github.com/worthwylfoundation-hue/cranium-kernel
 
----
+## Verified implementation revision
 
-## 1. Access
+| Evidence | Result |
+|---|---|
+| Verified implementation SHA | `2d0c6928ed5efb75a22a602f43516d22e9fbf610` |
+| PR | [#55: reject denied execution receipts and bind receipt context](https://github.com/worthwylfoundation-hue/cranium-kernel/pull/55), merged |
+| Hosted checks on PR #55 head | CodeQL, Android, TypeScript, and Enterprise Integration Evidence all passed |
+| Clean-clone reproduction | `npm ci --legacy-peer-deps`; `npm run verify`; `npm run verify:denial-semantics`; exit 0 at exact SHA |
+| Package audit | 0 vulnerabilities reported across 71 audited packages |
+| Production-readiness static checks | 33 passed, zero failures, two documented local-Compose TLS warnings |
+| Acquisition stress suite | 14 passed, zero failed, zero not-executed |
+| Final worktree | Clean |
 
-| Fact | Value |
-|------|--------|
-| Canonical URL | https://github.com/worthwyl2022-cloud/cranium-kernel |
-| Default branch | `main` |
-| Visibility | **Private** |
-| Open PRs (at report time) | **None** |
-| Public implication | Profile / inventory describe the Kernel; they do **not** grant public source access |
+The pin metadata in this documentation-only update is stamped to the verified implementation SHA above. A documentation-only commit may follow it; do not mistake a later documentation tip for a newly verified implementation revision.
 
-Clone (authorized):
+## Dependency PR resolution
 
-```bash
-git clone https://github.com/worthwyl2022-cloud/cranium-kernel.git
-cd cranium-kernel
-git fetch origin
-git checkout main
-git rev-parse HEAD
-```
+- PR #56 merged: React `19.3.1`.
+- PR #57 closed as superseded because it conflicted with #56's lockfile changes.
+- PR #58 merged with React and React DOM aligned at `19.3.1`; CodeQL, Android, TypeScript, and enterprise-integration checks passed.
 
----
+## Outstanding release gates
 
-## 2. Revision model (do not collapse these)
+1. Refresh the Commander and both boot-drive Kernel pins and verify their embedded snapshots against the recorded source commit.
+2. Enforce private-repository branch protection. The current GitHub plan returns HTTP 403 for branch-protection APIs and requires GitHub Pro for private repositories. Until this is resolved, successful PR checks are evidence of execution, not proof that GitHub enforced them as merge requirements.
+3. Complete production TLS configuration and live PostgreSQL/Redis, backup/restore, multi-node, disaster-recovery, HSM/KMS, and independent security-audit evidence.
 
-| Label | Meaning |
-|-------|--------|
-| **CURRENT_MAIN_TIP** | `origin/main` HEAD right now |
-| **VERIFIED_DILIGENCE_STAMP** | Last revision that completed **full** project verify (CI `npm run verify` gate) |
-| **Downstream pin** | What Commander / boot-drive cite for provenance |
+## Non-claims
 
-**Rule:** Docs-only commits after a stamp are allowed. They do **not** inherit the stamp. Promote a newer tip to the stamp only after full verify exit 0.
-
----
-
-## 3. Live reconciliation (this report)
-
-| Revision | SHA | Role |
-|----------|-----|------|
-| **Verified stamp** | `710ab844571c704078852b38d9451ffe68900acf` | Actions **#253** · full verify **PASS** · 2026-10-17 |
-| **main at report start** | `3ef18591d7481987add3b05b6fc212e6b121bbc7` | Docs (#54 Justice OS naming) **after** stamp |
-| Intermediate docs | `05967099…`, `bd6835bc…` | Pin restamp + completion status |
-
-**Delta:** `710ab84` → `3ef18591` = documentation / naming alignment only (no claim of re-verified implementation tip without a new Actions full gate).
-
----
-
-## 4. Downstream pins (aligned to stamp)
-
-| Consumer | Pin file | Cites |
-|----------|----------|--------|
-| Commander | `KERNEL_PIN` | `710ab84` verified |
-| Boot / Chromium | `chromiumos/KERNEL_PIN` | `710ab84` verified |
-| Account inventory | `ACCOUNT_INVENTORY.md` | `710ab84` |
-
-All consumers correctly pin the **stamp**, not an unverified tip. Good.
-
----
-
-## 5. How to re-verify a newer tip
-
-```bash
-git checkout <candidate-sha>   # or main after pull
-npm ci --legacy-peer-deps
-npm run verify
-# optional focused: npm run verify:denial-semantics
-```
-
-Or: Actions → Cranium TypeScript CI → `workflow_dispatch` on `main`.
-
-On exit 0: update `VERIFIED_DILIGENCE_STAMP` in `KERNEL_PIN`, then refresh Commander + boot pins to match.
-
----
-
-## 6. Non-claims
-
-- Stamp ≠ independent security audit  
-- Stamp ≠ HSM/KMS  
-- Stamp ≠ ChromiumOS image built  
-- Current tip ahead of stamp ≠ silently verified  
-
----
-
-**Canonical diligence citation for buyers:**  
-Liberty Kernel **`710ab84`** · project-verified · Actions #253 · exit 0.
+The verified stamp is not an independent security audit, formal verification, production certification, verified-boot proof, HSM/KMS deployment, or evidence of customers, revenue, or commercial traction.

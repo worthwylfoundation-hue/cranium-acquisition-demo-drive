@@ -1,47 +1,35 @@
-# Product name: Liberty Kernel (authority core)
-# Package / GitHub slug (until rename): cranium-kernel
-# Justice OS: authority-bound OS product; this repo is the sole grant path.
-# Access: private repository under worthwyl2022-cloud; public profile does not imply public source.
+# Convertible Cranium Kernel diligence pin
+# Product umbrella: Convertible Cranium
+# Authority component: Cranium Kernel
+# Cognition is proposal/evidence; only the Kernel may issue canonical authority.
 
-KERNEL_REPO=https://github.com/worthwyl2022-cloud/cranium-kernel
+KERNEL_REPO=https://github.com/worthwylfoundation-hue/cranium-kernel
 KERNEL_BRANCH=main
-PIN_SYNCED_ON=2026-10-18
+PIN_METADATA_UPDATED_ON=2026-10-19
 
-# --- Revision reconciliation (2026-10-18) ---
-# VERIFIED_DILIGENCE_STAMP = last tip that completed full project verify (Actions #253).
-# KERNEL_MAIN_TIP_CURRENT = origin/main HEAD (may include docs-only commits after the stamp).
-# Rule: tip may lag or lead the stamp; only the stamp is "project-verified." Re-run full verify before promoting a newer tip to the stamp.
-
-KERNEL_MAIN_TIP_CURRENT=3ef18591d7481987add3b05b6fc212e6b121bbc7
-KERNEL_MAIN_TIP_CURRENT_NOTE=docs: align Kernel diligence with Justice OS naming (#54) and prior docs commits after 710ab84
-
-VERIFIED_DILIGENCE_STAMP=710ab844571c704078852b38d9451ffe68900acf
-VERIFIED_ON=2026-10-17
-VERIFIED_COMMANDS=workflow_dispatch Cranium TypeScript CI (npm ci --legacy-peer-deps; lint; build; synapse; miracle-memory; atomic-recovery; conformance; production-boundary; constitution; constitution-runtime; adversarial authority-boundary; evidence:manifest; git diff evidence-manifest; npm run verify)
+# Exact implementation revision verified from a clean checkout.
+VERIFIED_DILIGENCE_STAMP=ce24cd42ff520ba9e6953ccdda3b818dd6d48687
+VERIFIED_ON=2026-10-19
+VERIFIED_COMMANDS=npm ci; npm run verify; npm run verify:denial-semantics
 VERIFIED_EXIT=0
-VERIFIED_NODE=Node.js 24 (GitHub Actions setup-node)
-VERIFIED_OS=Ubuntu (ubuntu-latest)
-VERIFIED_RUN_URL=https://github.com/worthwyl2022-cloud/cranium-kernel/actions/runs/39054817803
-VERIFIED_RUN_NUMBER=253
-VERIFIED_JOB=typescript conclusion=success; Complete verification gate conclusion=success
-VERIFIED_LOG_NOTE=Project verification on tip 710ab84 (liberty-kernel package identity + constitution engine_proofs=8). Not an independent security audit. Downstream pins (Commander, boot-drive) should cite this stamp until a newer tip is re-verified.
+VERIFIED_NODE=Node.js v24.18.0
+VERIFIED_OS=Android Termux
+VERIFIED_CLONE=clean checkout at exact VERIFIED_DILIGENCE_STAMP; npm ci and both verification commands exited 0; working tree clean after verification
+VERIFIED_NPM_AUDIT=0 vulnerabilities reported across 71 audited packages
+VERIFIED_HOSTED_CI_PR=60
+VERIFIED_HOSTED_CI_HEAD=57d938d2fb93a09cf86c84eefc57c5ad18395173
+VERIFIED_HOSTED_CI_RESULT=PR #60 CodeQL, Android, TypeScript, and Enterprise Integration Evidence passed; current main push CI on ce24cd4 passed all four workflows
+VERIFIED_MAIN_CI_RUNS=39229081170 (CodeQL); 39229081282 (Android); 39229081319 (Enterprise Integration Evidence); 39229081188 (TypeScript CI)
+ACQUISITION_STRESS_SUITE=14 passed; 0 failed; 0 not executed
+PRODUCTION_READINESS_CHECKS=33 passed
+PRODUCTION_READINESS_WARNINGS=local Compose disables PostgreSQL TLS and uses plaintext Redis; production must enable managed/private TLS and rediss:// or equivalent private-network encryption
 
-PHASE_1_3_GATE=c2bd6d38a71f1ae124beec73df68b8af91a23bc0
-CANON_V1_SQUASH=482b9c54a80f0894e523cb94c77fa85d3f62c264
-KERNEL_FEATURE_TIP=1704c3e30269a364f696d96bf76b48c87daabee9
-TRANSPORT_PR50_MERGE=c397c6312af9753ff5b05990417670927f4d585c
-PRIOR_STAMP_0f125fc=0f125fc291ba17f362573028313006a6dc2915dc
-PRIOR_STAMP_52f312d=52f312dc5b4f080332d47836ef55b6b73d1ef99b
+PRODUCT_AUTHORITY_CORE=Cranium Kernel
+PRODUCT_OS=Convertible Cranium Commander OS
+PRODUCT_UI=Convertible Cranium Commander OS
+AI_PERSONA=WorthWyl AI
+SUBSTRATE_A=Convertible Cranium Guardian Substrate (Constitutional Integrity)
+SUBSTRATE_B=Convertible Cranium Imperial Substrate (Evidence Integrity)
+ENGINE_LAYOUT=Guardian handles Constitutional Integrity; Imperial handles Evidence Integrity; Cranium Kernel is the sole authority boundary
 
-PRODUCT_AUTHORITY_CORE=Liberty Kernel
-PRODUCT_OS=Convertible Cranium Justice OS
-PRODUCT_UI=Convertible Cranium Commander AI
-SUBSTRATE_A=Guardian (Constitutional Integrity)
-SUBSTRATE_B=Imperial (Evidence Integrity)
-ENGINE_LAYOUT=Guardian: A1 Synapse D_A + A2 Constitutional; Imperial: B1 Synapse D_B + B2 Evidence Grounding; Liberty Kernel = sole boundary under both
-NAMING_MAP=docs/REPOSITORY_NAMING_MAP_V1.md
-ARCHITECTURE_TREE=docs/JUSTICE_OS_ARCHITECTURE_TREE_V1.md
-COMPLETION_STATUS=docs/JUSTICE_OS_COMPLETION_STATUS_V1.md
-
-# Residuals (non-blocking for project verify): npm audit on buyer machine; env-gated Redis/Postgres.
-# Not claimed: independent security audit, HSM/KMS, verified boot, quantum runtime, Metabolic Memory v2 on grant path, customers, revenue.
+NON_CLAIMS=No independent security audit; no HSM/KMS deployment; no verified-boot proof; no production certification; no customers, revenue, or commercial traction inferred
