@@ -1,4 +1,4 @@
-KERNEL_REPO=https://github.com/worthwylfoundation-hue/cranium-kernel
+KERNEL_REPO=https://github.com/worthwyl2022-cloud/cranium-kernel
 KERNEL_BRANCH=main
 KERNEL_PIN=2d0c692
 KERNEL_COMMIT=2d0c6928ed5efb75a22a602f43516d22e9fbf610
