@@ -60,3 +60,5 @@ The canonical Kernel source snapshot is pinned to the verified diligence stamp r
 ## Ownership
 
 © 2026 Wyl Mathes · WorthWyl Media. All rights reserved.
+
+See also: [ECOSYSTEM.md](./ECOSYSTEM.md) · [LICENSE](./LICENSE)

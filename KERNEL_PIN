@@ -1,4 +1,6 @@
-KERNEL_REPO=https://github.com/worthwylfoundation-hue/cranium-kernel
+KERNEL_REPO=worthwylfoundation-hue/cranium-kernel
+KERNEL_VISIBILITY=private
+KERNEL_AUTHORITY_NOTE=Private repository; exact verified revision is recorded below.
 KERNEL_BRANCH=main
 KERNEL_PIN=9508185
 KERNEL_COMMIT=9508185be264de77ebfe88904e98237e242697f1
